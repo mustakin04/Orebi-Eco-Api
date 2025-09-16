@@ -11,7 +11,7 @@ const categorySchema=new Schema({
     },
     subCategory:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'subCategory'
+        ref:'SubCategory'
     }]
 })
 module.exports=mongoose.model("Category",categorySchema)
