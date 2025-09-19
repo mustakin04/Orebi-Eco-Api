@@ -1,3 +1,4 @@
+
 const Product = require("../model/productSchema");
 const uploadResult =require("../utils/cloudinay")
 const productController = async (req, res) => {
@@ -38,5 +39,19 @@ const productController = async (req, res) => {
     });
   }
 };
+const getProduct=async(req,res)=>{
 
-module.exports = productController;
+   const data=await Product.find({})
+    if(!data){
+      return res.status(400).json({
+        message:"not get data"
+      })
+    }
+    res.status(200).json({
+      message:"get all data",
+      data:data
+    })
+
+}
+
+module.exports = {productController,getProduct};

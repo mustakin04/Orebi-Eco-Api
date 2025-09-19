@@ -1,5 +1,5 @@
-const categorySchema = require("../model/categorySchema");
 const Category = require("../model/categorySchema");
+const subCategory = require("../model/subCategory");
 const SubCategory = require("../model/subCategory");
 
 const subCategoryController = async (req, res) => {
@@ -50,4 +50,17 @@ const deleteSubCategory = async (req, res) => {
     data: DeleteSubCategory,
   });
 };
-module.exports = { subCategoryController, deleteSubCategory };
+
+const getSubCategory=async(req,res)=>{
+       const subCategorys= await subCategory.find({})
+       if(!subCategorys){
+        res.status(400).json({
+          message:"subCategory is not get"
+        })
+       }
+       res.status(200).json({
+        message:"subCategory is find",
+        data:subCategorys
+       })
+}
+module.exports = { subCategoryController, deleteSubCategory ,getSubCategory };
